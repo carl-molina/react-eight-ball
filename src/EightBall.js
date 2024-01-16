@@ -31,12 +31,15 @@ function choice(items) {
 }
 
 
-function EightBall({ answers }) {
+function EightBall( ANSWERS ) {
   const [color, setColor] = useState("black");
   const [msg, setMsg] = useState("Think of a question");
 
   const randomMsg = choice(ANSWERS).msg;
+  console.log('randomMsg:', randomMsg);
   const randomColor = choice(ANSWERS).color;
+  console.log('randomColor:', randomColor);
+
 
   setColor(randomColor);
   setMsg(randomMsg);
