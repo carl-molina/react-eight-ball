@@ -30,27 +30,42 @@ function choice(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+/** Our EightBall
+ *
+ * Props:
+ * - answers: array of answer objects containing msg and color
+ *
+ * State:
+ * - color: 'black'
+ * - msg: 'very doubtful' // see above
+ *
+ * App -> EightBall
+ */
 
-function EightBall( ANSWERS ) {
+function EightBall({ answers = ANSWERS }) {
+
   const [color, setColor] = useState("black");
   const [msg, setMsg] = useState("Think of a question");
 
-  const randomMsg = choice(ANSWERS).msg;
-  console.log('randomMsg:', randomMsg);
-  const randomColor = choice(ANSWERS).color;
-  console.log('randomColor:', randomColor);
+  const randomMsg = choice(answers).msg;
+  const randomColor = choice(answers).color;
 
+  function _clickHandler() {
+    setColor(randomColor);
+    setMsg(randomMsg);
+  }
 
-  setColor(randomColor);
-  setMsg(randomMsg);
+  const style = {
+    backgroundColor: color
+  };
 
-  return (
-    <div className="EightBall">
-      <div className="EightBall-ball" style={`background-color: ${color}`}>
+return (
+  <div className="EightBall" onClick={_clickHandler}>
+    <div className="EightBall-ball" style={ style }>
       <p className="EightBall-msg">{msg}</p>
-      </div>
     </div>
-  );
+  </div>
+);
 
 }
 
