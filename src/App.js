@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import EightBall from './EightBall'
+import EightBall from "./EightBall";
 
 function App() {
   return (
